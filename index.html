@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2f7;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px #0002;
+        }
+
+        h1 {
+            text-align: center;
+            color: #243b64;
+        }
+
+        label {
+            display: block;
+            margin-top: 14px;
+        }
+
+        input, select, button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-top: 6px;
+        }
+
+        button {
+            margin-top: 22px;
+            background: #243b64;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 12px;
+            background: #e5f6e9;
+            border-radius: 6px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Performance Prediction</h1>
+        <p>Enter the student's academic details.</p>
+
+        <form method="POST">
+            <label>Study Time (1–4)</label>
+            <select name="studytime" required>
+                <option value="1">Less than 2 hours</option>
+                <option value="2">2–5 hours</option>
+                <option value="3">5–10 hours</option>
+                <option value="4">More than 10 hours</option>
+            </select>
+
+            
+<label>Past Class Failures (0–4)</label>
+<input type="number" name="failures"
+       min="0" max="4" value="0" step="1" required>
+
+<label>Absences (0–93)</label>
+<input type="number" name="absences"
+       min="0" max="93" value="0" step="1" required>
+
+<label>First Period Grade (0–20)</label>
+<input type="number" name="G1"
+       min="0" max="20" value="10" step="1" required>
+
+<label>Second Period Grade (0–20)</label>
+<input type="number" name="G2"
+       min="0" max="20" value="10" step="1" required>
+
+
+            <button type="submit">Predict Performance</button>
+        </form>
+
+        {% if prediction %}
+        <div class="result">
+            <h2>Predicted Category: {{ prediction }}</h2>
+            <p>This is a model estimate, not a guarantee of actual results.</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
